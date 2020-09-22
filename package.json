@@ -1,0 +1,25 @@
+{
+  "name": "spotify-buddylist",
+  "version": "1.0.0",
+  "description": "Fetch the friend activity Spotify feed.",
+  "homepage": "https://github.com/valeriangalliat/spotify-buddylist",
+  "bugs": "https://github.com/valeriangalliat/spotify-buddylist/issues",
+  "license": "Unlicense",
+  "author": {
+    "name": "Val",
+    "url": "http://val.codejam.info/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/valeriangalliat/spotify-buddylist.git"
+  },
+  "scripts": {
+    "lint": "standard"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
+  }
+}
