@@ -20,7 +20,7 @@ the friend activity feed.
 Since the calls are pretty trivial, it's mostly there for public
 documentation purpose rather than to really be used as a library, but I
 still made it available on npm in case you quickly want to put together
-with this.
+something with this.
 
 The only dependency is [node-fetch](https://github.com/node-fetch/node-fetch)
 to make HTTP requests.
@@ -32,8 +32,8 @@ regular API access token, so you can't use the official API way of
 logging in, getting and refreshing tokens.
 
 The good news is that if you don't mind logging in on the web player and
-refreshing a value in your code once a year, it's actually quite easier.
-More on that [below](#sp-dc-cookie).
+refreshing a value in your code once a year, it's actually quite easier
+than the official OAuth way. More on that [below](#sp-dc-cookie).
 
 ```js
 const buddyList = require('spotify-buddylist')
