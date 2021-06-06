@@ -79,8 +79,10 @@ The output looks like:
 ## `sp_dc` cookie
 
 This is the only value that you need for this to work. After you login
-on the web player (which I don't automate because reCAPTCHA), you get
+on the [web player] (which I don't automate because reCAPTCHA), you get
 a bunch of cookies, including one named `sp_dc`.
+
+[web player]: https://open.spotify.com/
 
 Seems like it's valid for one year, and with just that value you can
 call anytime an endpoint that gives you a refreshed, elevated API access
