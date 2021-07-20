@@ -11,7 +11,11 @@ exports.getWebAccessToken = async function getWebAccessToken (spDcCookie) {
 }
 
 exports.getFriendActivity = async function getFriendActivity (webAccessToken) {
-  const res = await fetch('https://guc-spclient.spotify.com/presence-view/v1/buddylist', {
+  // Looks like the app now uses `https://spclient.wg.spotify.com/presence-view/v1/buddylist`
+  // but both endpoints appear to be identical in the kind of token they accept
+  // and the response format.
+  const res = await
+    fetch('https://guc-spclient.spotify.com/presence-view/v1/buddylist', {
     headers: {
       Authorization: `Bearer ${webAccessToken}`
     }
