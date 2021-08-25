@@ -38,8 +38,16 @@ than the official OAuth way. More on that [below](#sp-dc-cookie).
 ```js
 const buddyList = require('spotify-buddylist')
 
-const { accessToken } = await buddyList.getWebAccessToken(spDcCookie)
-const friendActivity = await buddyList.getFriendActivity(accessToken)
+async function main () {
+  const spDcCookie = 'put your cookie here'
+
+  const { accessToken } = await buddyList.getWebAccessToken(spDcCookie)
+  const friendActivity = await buddyList.getFriendActivity(accessToken)
+
+  console.log(friendActivity)
+}
+
+main()
 ```
 
 The output looks like:
