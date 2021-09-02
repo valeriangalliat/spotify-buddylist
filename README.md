@@ -2,6 +2,9 @@
 
 > Fetch the friend activity Spotify feed.
 
+**Note:** don't know how to code? Check the [extra info](#dont-know-how-to-code)
+at the bottom!
+
 ## Overview
 
 The [Spotify API](https://developer.spotify.com/documentation/web-api/)
@@ -124,3 +127,79 @@ Should your script run more than the token response's
 `accessTokenExpirationTimestampMs` (currently an hour), I would suggest
 implementing token refresh logic which is just calling
 `getWebAccessToken` and `setAccessToken` again like above.
+
+## Don't know how to code?
+
+If the documentation above doesn't make much sense to you, here's a
+couple extra information you might find useful. 🙏
+
+Because spotify-buddylist is a library, it's meant to be used by *other
+programs*, and it doesn't makes any assumption on how it's going to be
+used. You're free to *code* a program that automatically populates
+another playlist, sends you a notification when a specific friend plays
+a specific song, feeds an online spreadsheet, or just appends to a local
+file.
+
+But don't worry, if you don't know how to code, you can still use the
+[example](example.js) that just displays the data when you run it. The
+following steps will show you how to do that.
+
+### Installing
+
+Because this library is built with [Node.js](https://nodejs.org/),
+you'll need to install it first.
+
+Then, [download the archive for this repository](https://github.com/valeriangalliat/spotify-buddylist/archive/refs/heads/master.zip)
+and extract it.
+
+Open a terminal, go in the spotify-buddylist directory that you just
+extracted, and run:
+
+```sh
+npm install
+```
+
+This will install the extra dependencies needed for the program to run.
+
+### Fetching the cookie
+
+Then you'll need to grab your `sp_dc` cookie from Spotify. This is a
+requirement because Spotify doesn't allow third-party apps to get the
+friend activity feed, so this cookie allows us to pretend that we're the
+Spotify app itself to get access to that data.
+
+For that, login on the [web player] and open your browser's web
+developer tools. It's usually in "settings", "more tools", "developer
+tools". In that pane, go in "application", "storage", "cookies",
+`https://open.spotify.com` (or something close to that depending on your
+browser).
+
+You'll find a cookie named `sp_dc`. Copy its value.
+
+### Running the example
+
+In the spotify-buddylist directory, open `example.js` with any text
+editor, and paste the cookie value in place of the text "put your cookie
+here".
+
+Now, you can run the following command to execute the script:
+
+```sh
+node example.js
+```
+
+This will display the JSON response from Spotify (once).
+
+If you want to run it periodically, you can uncomment the last line of
+the file (remove the `//` from the beginning of the line and save the
+file) and run the above command again. Now the script will run
+indefinitely, fetching new data every minute and appending it to the
+terminal output.
+
+That should be enough to get you started! 🎉
+
+If you want to do more things with that, you might want to learn a
+little bit of JavaScript. Programming is powerful, and will allow you to
+do the things that *you* want to do with your computer, instead of being
+limited to the things that someone else decided that you should be able
+to do. Enjoy!
