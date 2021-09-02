@@ -33,7 +33,7 @@ logging in, getting and refreshing tokens.
 
 The good news is that if you don't mind logging in on the web player and
 refreshing a value in your code once a year, it's actually quite easier
-than the official OAuth way. More on that [below](#sp-dc-cookie).
+than the official OAuth way. More on that [below](#sp_dc-cookie).
 
 ```js
 const buddyList = require('spotify-buddylist')
