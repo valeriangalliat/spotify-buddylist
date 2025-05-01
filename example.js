@@ -3,8 +3,9 @@ const buddyList = require('./')
 async function main () {
   const spDcCookie = 'put your cookie here'
 
-  const { accessToken } = await buddyList.getWebAccessToken(spDcCookie)
-  const friendActivity = await buddyList.getFriendActivity(accessToken)
+  const accessTokenInfo = await buddyList.getWebAccessToken(spDcCookie)
+  console.log(accessTokenInfo)
+  const friendActivity = await buddyList.getFriendActivity(accessTokenInfo.accessToken)
 
   console.log(JSON.stringify(friendActivity, null, 2))
 }
