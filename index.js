@@ -77,6 +77,7 @@ exports.getFriendActivity = async function getFriendActivity(webAccessToken) {
   const res = await
     fetch('https://guc-spclient.spotify.com/presence-view/v1/buddylist', {
       headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         Authorization: `Bearer ${webAccessToken}`
       }
     })
