@@ -1,6 +1,6 @@
 {
   "name": "spotify-buddylist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fetch the friend activity Spotify feed.",
   "license": "Unlicense",
   "author": "Val (http://val.codejam.info)",
