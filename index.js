@@ -1,4 +1,3 @@
-const fetch = require('node-fetch')
 const otplib = require('otplib')
 
 // Clean the hex string by removing invalid characters
@@ -51,7 +50,7 @@ exports.getWebAccessToken = async function getWebAccessToken (spDcCookie) {
   const params = new URLSearchParams({
     reason: 'transport',
     productType: 'web_player',
-    totp: totp,
+    totp,
     totpVer: '5',
     ts: timestamp.toString()
   })
@@ -63,8 +62,14 @@ exports.getWebAccessToken = async function getWebAccessToken (spDcCookie) {
 
   const response = await fetch(`https://open.spotify.com/get_access_token?${params.toString()}`, {
     method: 'GET',
-    headers: headers
+    headers
   })
+
+  if (!response.ok) {
+    throw Object.assign(new Error(`Failed to get web access token: ${response.status}`), {
+      response
+    })
+  }
 
   return await response.json()
 }
@@ -73,13 +78,18 @@ exports.getFriendActivity = async function getFriendActivity (webAccessToken) {
   // Looks like the app now uses `https://spclient.wg.spotify.com/presence-view/v1/buddylist`
   // but both endpoints appear to be identical in the kind of token they accept
   // and the response format.
-  const res = await
-  fetch('https://guc-spclient.spotify.com/presence-view/v1/buddylist', {
+  const res = await fetch('https://guc-spclient.spotify.com/presence-view/v1/buddylist', {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
       Authorization: `Bearer ${webAccessToken}`
     }
   })
+
+  if (!res.ok) {
+    throw Object.assign(new Error(`Failed to get friend activity: ${res.status}`), {
+      response: res
+    })
+  }
 
   return res.json()
 }
