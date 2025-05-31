@@ -103,24 +103,19 @@ undocumented endpoint that retrieves the friend activity.
 ## Usage with spotify-web-api-node
 
 You might already be using the [spotify-web-api-node](https://github.com/thelinmichael/spotify-web-api-node)
-package to use the official API. For convenience, I included a method to
-wrap it to include the `getWebAccessToken` and `getFriendActivity`
-methods on it.
+package to use the official API.
 
-Using it that way, you can leverage the same elevated token for all the
-official API requests as well.
+To authenticate using the `sp_dc` cookie:
 
 ```js
 const SpotifyWebApi = require('spotify-web-api-node')
 const buddyList = require('spotify-buddylist')
 
-const api = buddyList.wrapWebApi(new SpotifyWebApi({ spDcCookie }))
+const api = new SpotifyWebApi()
 
-const tokenResponse = await api.getWebAccessToken()
-api.setAccessToken(tokenResponse.body.accessToken)
+const tokenResponse = await buddyList.getWebAccessToken(config.spotify.spDcCookie)
 
-const friendActivityResponse = await api.getFriendActivity()
-const friendActivity = friendActivityResponse.body
+api.setAccessToken(tokenResponse.accessToken)
 ```
 
 Should your script run more than the token response's
